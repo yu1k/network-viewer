@@ -1,0 +1,23 @@
+{
+  "name": "network-viewer",
+  "version": "1.0.0",
+  "description": "Network Viewer",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yu1k/network-viewer.git"
+  },
+  "author": "yu1k",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/yu1k/network-viewer/issues"
+  },
+  "homepage": "https://github.com/yu1k/network-viewer#readme",
+  "dependencies": {
+    "electron": "^21.2.3"
+  }
+}
