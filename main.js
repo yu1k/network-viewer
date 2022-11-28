@@ -26,9 +26,8 @@ app.whenReady().then(() => {
     createWindow();
     console.log("start: ");
 
-    // アプリケーションがアクティブになった際の処理 (macOSではDockでアイコンがクリックされてアプリケーションが実行されたとき）
+    // 開いたウインドウがない場合にウインドウを開く (macOS)
     app.on("activate", () => {
-        // 開いたウインドウがない場合にウインドウを開く (macOS)
         if (BrowserWindow.getAllWindows().length === 0) {
             createWindow();
         }
@@ -36,8 +35,8 @@ app.whenReady().then(() => {
 });
 
 /**
- * macOS以外ではウィンドウが閉じられたらアプリを終了させる
- * Windowsに対応させたら必要になる
+ * macOS以外ではすべてのウィンドウが閉じられたらアプリを終了させる
+ * 他のOSに対応させた際に必要になる
  */
 app.on("window-all-closed", () => {
     if (process.platform !== "darwin") {
