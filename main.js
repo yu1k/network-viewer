@@ -3,6 +3,8 @@
 const { app, BrowserWindow } = require("electron");
 const path = require("path");
 
+const menu = require("./lib/menu");
+
 // ウィンドウ管理用
 let win = null;
 function createWindow() {
@@ -10,7 +12,18 @@ function createWindow() {
         width: 800,
         height: 600,
         webPreferences: {
-            preload: path.join(__dirname, "./preload.js")
+            preload: path.join(__dirname, "./preload.js"),
+            defaultFontFamily: {
+                standard: "Times New Roman",
+                serif: "Times New Roman",
+                sansSerif: "Arial",
+                monospace: "Courier New",
+                cursive: "Script",
+                fantasy: "Impact"
+            },
+            defaultFontSize: 16,
+            defaultMonospaceFontSize:13,
+            minimumFontSize: 0
         }
     });
 
@@ -42,4 +55,26 @@ app.on("window-all-closed", () => {
     if (process.platform !== "darwin") {
         app.quit();
     }
+});
+
+//  メインの処理
+app.on("ready", () => {
+    // 実行している環境がmacOSかを判定する
+    const isMac = (process.platform === "darwin");
+    if (isMac != true) {
+        console.log("Sound ViewerはmacOS専用アプリです。アプリ実行環境を確認してください。" + "\n" + "アプリを終了します。");
+        // Electron appを終了する
+        app.quit();
+    }
+
+    // app が起動した際に初回のみで実行する
+    menu.initializeMenu();
+
+    // appが起動した際に初回のメニュー生成で実行する, その後はあとのsetIntervalをかけて自動で更新する処理に任せる。
+    menu.updateMenuItem();
+    // メニューバーのTrayタイトル, メニューアイテム(各種サウンドデバイス等)を更新するために3秒に一回、updateMenuItem関数を実行する。
+    setInterval(menu.updateMenuItem, 3000);
+
+    // Dockのアプリアイコンを非表示にする
+    app.dock.hide();
 });
