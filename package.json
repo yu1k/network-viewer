@@ -3,9 +3,18 @@
   "version": "1.0.0",
   "description": "Network Viewer",
   "main": "main.js",
+  "build": {
+    "appId": "",
+    "productName": "Network Viewer",
+    "icon": "./assets/icons/",
+    "mac": {
+      "target": "dmg"
+    }
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "build": "npx electron-builder --mac --universal --publish never"
   },
   "repository": {
     "type": "git",
@@ -18,6 +27,10 @@
   },
   "homepage": "https://github.com/yu1k/network-viewer#readme",
   "dependencies": {
-    "electron": "^21.2.3"
+    "axios": "^0.27.2"
+  },
+  "devDependencies": {
+    "electron": "^22.0.0",
+    "electron-builder": "^22.10.3"
   }
 }
