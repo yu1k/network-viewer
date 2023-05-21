@@ -14,7 +14,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "build": "npx electron-builder --mac --universal --publish never"
+    "build": "npx electron-builder --mac --universal"
   },
   "repository": {
     "type": "git",
@@ -27,7 +27,8 @@
   },
   "homepage": "https://github.com/yu1k/network-viewer#readme",
   "dependencies": {
-    "axios": "^0.27.2"
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.3"
   },
   "devDependencies": {
     "electron": "^22.0.0",
