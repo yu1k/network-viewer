@@ -1,6 +1,6 @@
 # network-viewer
 
-Network Viewer はmacOSのメニューバーに端末のネットワーク等の情報を表示し、トラブルシューティング等を行う際に作業をサポートするツールです。
+Network Viewer はmacOSのメニューバーに端末のネットワーク等の情報を表示し、Wi-Fi等のネットワークに関するトラブルシューティングを行う際に作業をサポートするツールです。
 
 Electron アプリとして制作しました。
 
@@ -41,9 +41,62 @@ $ unset NETWORK_VIEWER_PASSWORD
 
 BSSIDの取得が必要でないならば上記の手順は必要ありません。
 
+## エラー集
+
+```
+$ brew update && brew install pyenv
+$ vim ~/.bashrc
+```
+
+```
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+```
+
+```
+$ source ~/.bash_profile
+
+$ pyenv install --list | grep '2.'
+$ pyenv install 2.7.18
+```
+
+```
+$ pyenv versions
+$ pyenv local 2.7.18
+```
+
+使用するPythonのバージョンを指定する
+
+```
+[user@MacBook:~/workspace/network-viewer ] $  pyenv versions
+* system (set by /Users/yu1k/.pyenv/version)
+  2.7.18
+[user@MacBook:~/workspace/network-viewer ] $ pyenv local 2.7.18
+```
+
+```
+$ export PYTHON_PATH=/Users/$(whoami)/.pyenv/shims/python2 npm run build
+```
+
+Electron でビルドしようとするとエラーが出力されました。
+
+`$ python2 -v` したら入っていませんでした。Electronでビルドする際にPython2が必要のようなので、上記のコマンドを実行してPython2をインストールします。
+
+エラーメッセージにあるように、python2がインストールされたマシンなら `$ which python2` を実行して表示されたPATHを `export PYTHON_PATH=` に入れて実行する方法でも回避できるようです。
+
+Python2のインストールが難しければ、electron-builder 23.0.x系をインストールしてElectronアプリをビルドします。
+
+### process.env を読み込めない
+
+dotenvモジュールをrequireします。
+
 ## TODO
 
 - [ ] グローバルIPアドレスの取得
+- [ ] テストコードを書く
+- [ ] CIを構築する
 
 ## Thanks
 
@@ -51,4 +104,4 @@ BSSIDの取得が必要でないならば上記の手順は必要ありません
 
 ## License
 
-[./assets/](./assets/) , [./icons.iconset](./icons.iconset) ディレクトリ以下に格納されている画像は [yu1k](https://github.com/yu1k/) がメモ帳に手書きで描いて作成した画像です。
+[./assets/](./assets/) ディレクトリの下に格納されている画像は [yu1k](https://github.com/yu1k/) がメモ帳に手書きで描いて作成した画像です。
