@@ -81,7 +81,7 @@ $ pyenv local 2.7.18
 
 ```
 [user@MacBook:~/workspace/network-viewer ] $  pyenv versions
-* system (set by /Users/yu1k/.pyenv/version)
+* system (set by /Users/user/.pyenv/version)
   2.7.18
 [user@MacBook:~/workspace/network-viewer ] $ pyenv local 2.7.18
 ```
