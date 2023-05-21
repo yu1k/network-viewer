@@ -4,6 +4,8 @@ Network Viewer はmacOSのメニューバーに端末のネットワーク等の
 
 Electron アプリとして制作しました。
 
+<img width="300" height="187.5" src="./assets/readme.jpg">
+
 ## Requirement
 
 ### 確認済みの環境:
@@ -40,6 +42,14 @@ $ unset NETWORK_VIEWER_PASSWORD
 ```
 
 BSSIDの取得が必要でないならば上記の手順は必要ありません。
+
+## Run test
+
+```
+$ npm run test
+```
+
+自動テストを実行します。
 
 ## エラー集
 
