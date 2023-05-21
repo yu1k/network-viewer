@@ -73,7 +73,7 @@ app.on("ready", () => {
     // appが起動した際に初回のメニュー生成で実行する, その後はあとのsetIntervalをかけて自動で更新する処理に任せる。
     menu.updateMenuItem();
     // メニューバーのTrayタイトル, メニューアイテム(各種サウンドデバイス等)を更新するために3秒に一回、updateMenuItem関数を実行する。
-    setInterval(menu.updateMenuItem, 3000);
+    setInterval(menu.updateMenuItem, 7000);
 
     // Dockのアプリアイコンを非表示にする
     app.dock.hide();
